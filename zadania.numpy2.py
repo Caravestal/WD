@@ -1,127 +1,58 @@
 import numpy as np
 from math import *
+
 # zad.1
-# a = np.arange(3, 9, 2)
-# print(a)
-# b = np.array([4, 6, 7])
-# print(b)
-# print(a * b)
-#
-# zad.2
-# a = np.arange(16).reshape(4, 4)
-# b = np.arange(9).reshape(3, 3)
-# print(b)
-# print("")
-# print(a)
-# w = 0
-# w2 = 0
-# for x in b:
-#     min = x[0]
-#     for y in range(1, len(x)):
-#         if x[y] <= min:
-#             min = x[y]
-#     print("w b dla wiersza " + str(w) + " najmiejasza jest " + str(min))
-#     w = w + 1
-#
-# for x in a:
-#     min = x[0]
-#     for y in range(1, len(x)):
-#         if x[y] <= min:
-#             min = x[y]
-#     print("w a dla wiersza " + str(w2) + " najmiejasza jest " + str(min))
-#     w2 = w2 + 1
-#
-# tempb = b.T
-# tempa = a.T
-# print(tempb)
-# print(tempa)
-# w3 = 0
-# w4 = 0
-# for x in tempb:
-#     min = x[0]
-#     for y in range(1, len(x)):
-#         if x[y] <= min:
-#             min = x[y]
-#     print("w b dla kolumny " + str(w3) + " najmiejasza jest " + str(min))
-#     w3 = w3 + 1
-#
-# for x in tempa:
-#     min = x[0]
-#     for y in range(1, len(x)):
-#         if x[y] <= min:
-#             min = x[y]
-#     print("w a dla kolumny " + str(w4) + " najmiejasza jest " + str(min))
-#     w4 = w4 + 1
+a = np.array([3, 4, 5])
+b = np.linspace(3, 10, 3)
+c = a * b
+print(c)
 
-# zad.3
-# a = np.arange(3, 9, 2)
-# print(a)
-# b = np.array([4, 6, 7])
-# print(b)
-# print(a.dot(b))
+#Zad5,6,7
+c = np.array([[60, 31], [45, 78], [15, 50]])
+a = np.sin(c)
+print(a)
 
-# zad.4
-# a = np.array([4, 6, 7])
-# b = np.array([1, 9, 8])
-# print(a * b)
+d = np.array([[47, 24], [64, 28], [19, 33]])
+b = np.cos(d)
+print(b)
+print("")
+dodawanie = np.add(a,b)
+print(dodawanie)
 
-# zad.5
-# aa = []
-# n = np.arange(6).reshape(2, 3)
-# print(n)
-# for x in n:
-#     for y in x:
-#         aa.append(sin(y))
-# a = np.array([aa])
-# print(a)
-#
-# # zad.6
-# bb = []
-# m = np.array([[4, 6, 7], [1, 4, 7]])
-# print(m)
-# for x in m:
-#     for y in x:
-#         bb.append(cos(y))
-# b = np.array([bb])
-# print(b)
-#
-# # zad.7
-# print(a + b)
+#Zad8
+a = np.array([[3, 7, 5], [6, 1, 9], [2, 7, 8]])
+for b in a:
+    print(b)
+    print("")
 
-# zad.8
-# b = np.arange(9).reshape(3, 3)
-# for x in b:
-#     print(x)
+#Zad9
+a = np.array([[3, 7, 5], [6, 1, 9], [2, 7, 8]])
+for b in a.flat:
+    print(b)
+    print("")
 
-# zad.9
-# b = np.arange(9).reshape(3, 3)
-# for x in b.flat:
-#     print(x)
-#     print("")
+#Zad10
+macierz = np.arange(0,81,1).reshape(9,9)
+print(macierz)
 
-# zad.10
-# a = np.arange(81).reshape(9, 9)
-# print(a)
-# a = a.reshape(3, 27)
-# print(a)
-# a = a.T
-# print(a)
-# a = a.ravel()
-# print(a)
+macierz_1 = macierz.reshape(3,27)
+print(macierz_1)
+macierz_2 = macierz.reshape(27,3)
+print(macierz_2)
+macierz_3 = macierz.reshape(81,1)
+print(macierz_3)
+macierz_4 = macierz.ravel()
+print(macierz_4)
 
-# zad.11
-# a = np.arange(12).reshape(3, 4)
-# print(a)
-# for x in a.flat:
-#     print(x)
-#     print("")
-# b = np.arange(12).reshape(4, 3)
-# print(b)
-# for x in b.flat:
-#     print(x)
-#     print("")
-# c = np.arange(12).reshape(2, 6)
-# print(c)
-# for x in c.flat:
-#     print(x)
-#     print("")
+#Zad11
+a = np.array([3, 7, 5, 6, 1, 9, 2, 7, 8, 6, 3, 6])
+print(a)
+macierz_1 = a.reshape(3, 4)
+print(macierz_1)
+print(macierz_1.ravel())
+macierz_2 = macierz_1.reshape(4,3)
+print(macierz_2)
+print(macierz_2.ravel())
+macierz_3 = macierz_1.reshape(2,6)
+print(macierz_3)
+print(macierz_3.ravel())
