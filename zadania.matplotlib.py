@@ -43,7 +43,19 @@ plt.title("Wykres sin(x), sin(x)")
 plt.show()
 
 # zad.5
-# nie wykrywa strony
+df = pd.read_csv('iris.data', sep=',', decimal='.', header=None)
+print(df)
+# przygotowanie wektora kolorów
+colors = np.random.randint(0, 50, len(df.index))
+# przygotowanie wektora z rozmiarami 'kropek'
+# scale = [np.abs(df[0].iloc[x] - df[1].iloc[x]) for x in range(len(df.index))]
+# można te wielkości troszeczkę 'podrasować'
+scale = [np.abs(df[0].iloc[x] - df[1].iloc[x]) * 5 for x in range(len(df.index))]
+
+plt.scatter(df[0], df[1], c=colors, s=scale)
+plt.xlabel('sepal length')
+plt.ylabel('sepal width')
+plt.show()
 
 # zad.6
 grupa = df[df['Plec'] == 'K'].agg({'Liczba': ['sum']})
