@@ -58,30 +58,31 @@ plt.ylabel('sepal width')
 plt.show()
 
 # zad.6
-grupa = df[df['Plec'] == 'K'].agg({'Liczba': ['sum']})
-grupa = grupa['Liczba'].values[0]
-grupa2 = df[df['Plec'] == 'M'].agg({'Liczba': ['sum']})
-grupa2 = grupa2['Liczba'].values[0]
 plt.subplot(1, 3, 1)
-dane = [grupa, grupa2]
-etykiety = ['Kobiety', 'Mężczyźni']
-plt.title("K i M")
-wykres = plt.bar(etykiety, dane)
+grouped = df.groupby('Plec').agg({'Liczba': ['sum']}).unstack()
+grouped.plot.bar(color=['r', 'g'])
+plt.xlabel('Płeć')
 
-gr = df[df['Plec'] == 'K'].groupby(['Rok']).agg({'Liczba': ['sum']})
-gr2 = df[df['Plec'] == 'M'].groupby(['Rok']).agg({'Liczba': ['sum']})
+# wykres 2
 plt.subplot(1, 3, 2)
-plt.xlabel('Rok')
-plt.ylabel('Ilosc')
-plt.title("K i M (rok)")
-plt.plot(gr)
-plt.plot(gr2)
+x = df['Rok'].unique()
+kobiety = df[(df.Plec == 'K')].groupby('Rok').agg({'Liczba':['sum']}).values
+mezczyzni = df[(df.Plec == 'M')].groupby('Rok').agg({'Liczba':['sum']}).values
+plt.plot(x, kobiety, label="Kobiety")
+plt.plot(x, mezczyzni, label="Mężczyźni")
+plt.ylabel('Liczba narodzonych dzieci')
 
-g = df.groupby(['Rok']).agg({'Liczba': ['sum']})
+# wykres 3
 plt.subplot(1, 3, 3)
-plt.xlabel('Rok')
-plt.ylabel('Ilosc')
-g.plot.bar()
+x = df['Rok'].unique()
+# bez funkcji flatten matplotlib wyrzuca wyjątek, który informuje nas, że nie można
+# przekazywać parametru jako tablicy wielowymiarowej a w takiej postaci w tym przypadku
+# zwracany jest wektor y, korzystamy więc z flatten() poznanej przy okazji omawiania biblioteki numpy
+y = df.groupby('Rok').agg({'Liczba':['sum']}).values.flatten()
+
+plt.bar(x, y)
+
+# wyświetlamy cały wykres
 plt.show()
 
 # zad.7
